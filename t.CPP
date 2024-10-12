@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    cout << "first modifies one";
+    cout << "first modifies hey one";
     
     return 0;
 }
