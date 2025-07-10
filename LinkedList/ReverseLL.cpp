@@ -15,7 +15,7 @@ struct Node {
 class Solution {
 public:
     Node* reverseList(Node* head) {
-        if (head == NULL || head->next == NULL) {
+        if(head == NULL || head->next == NULL) {
             return head;
         }
 
@@ -29,7 +29,6 @@ public:
             prev = curr;
             curr = forward;
         }
-
         return prev;
     }
 };
