@@ -9,7 +9,6 @@ struct Node {
         next = NULL;
     }
 } 
-
 class Solution {
   public:
    int length(Node*head){
