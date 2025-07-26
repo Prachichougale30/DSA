@@ -1,101 +1,113 @@
 #include <iostream>
 using namespace std;
 
-class Node
-{
+class Node {
 public:
     int data;
     Node *prev;
     Node *next;
-    // constructor
-    Node(int d)
-    {
+
+    // Constructor
+    Node(int d) {
         this->data = d;
-        this->next = NULL;
         this->prev = NULL;
+        this->next = NULL;
     }
 };
-void print(Node *head)
-{
-    Node *temp = head;
-    while (temp != NULL)
-    {
-        cout << temp->data << "->";
 
+// Print the linked list
+void print(Node *head) {
+    Node *temp = head;
+    while (temp != NULL) {
+        cout << temp->data << "->";
         temp = temp->next;
     }
-    cout << "NULL";
-    cout << endl;
+    cout << "NULL" << endl;
 }
 
-int getlength(Node *head)
-{
-    Node *temp = head;
+// Get length of DLL
+int getlength(Node *head) {
     int cnt = 0;
-    while (temp != NULL)
-    {
+    Node *temp = head;
+    while (temp != NULL) {
         cnt++;
         temp = temp->next;
     }
     return cnt;
 }
-void insertatHead(Node *&head, int d)
-{
+
+// Insert at head
+void insertAtHead(Node *&head, Node *&tail, int d) {
     Node *temp = new Node(d);
-    temp->next = head;
-    head->prev = temp;
-    head = temp;
-}
-void inserAtTail(Node *&tail, int d)
-{
-    Node *temp = new Node(d);
-    temp->prev = tail;
-    tail->next = temp;
-    temp->next = NULL;
-    tail = temp;
-}
-void insertAtPosition(Node *&tail, Node *&head, int position, int d)
-{
-    // insert ata start
-    if (position == 1)
-    {
-        insertatHead(head, d);
+    if (head == NULL) {
+        head = temp;
+        tail = temp;
+    } else {
+        temp->next = head;
+        head->prev = temp;
+        head = temp;
     }
+}
+
+// Insert at tail
+void insertAtTail(Node *&tail, Node *&head, int d) {
+    Node *temp = new Node(d);
+    if (tail == NULL) {
+        head = temp;
+        tail = temp;
+    } else {
+        tail->next = temp;
+        temp->prev = tail;
+        tail = temp;
+    }
+}
+
+// Insert at position
+void insertAtPosition(Node *&tail, Node *&head, int position, int d) {
+    if (position == 1) {
+        insertAtHead(head, tail, d);
+        return;
+    }
+
     Node *temp = head;
-    int cnt = 0;
-    while (cnt < position - 1)
-    {
+    int cnt = 1;
+    while (cnt < position - 1 && temp != NULL) {
         temp = temp->next;
         cnt++;
     }
-    // inserting at last position
-    if (temp->next == NULL)
-    {
-        inserAtTail(tail, d);
+
+    // Insert at end
+    if (temp->next == NULL) {
+        insertAtTail(tail, head, d);
         return;
     }
-    Node *nodeToinsert = new Node(d);
-    nodeToinsert->next = temp->next;
-    temp->next->prev = nodeToinsert;
-    temp->next = nodeToinsert;
-    nodeToinsert->prev = temp;
+
+    // Inserting in middle
+    Node *nodeToInsert = new Node(d);
+    nodeToInsert->next = temp->next;
+    nodeToInsert->prev = temp;
+    temp->next->prev = nodeToInsert;
+    temp->next = nodeToInsert;
 }
-int main()
-{
-    Node *node1 = new Node(10);
-    Node *head = node1;
-    Node *tail = node1;
-    insertatHead(head, 11);
+
+int main() {
+    Node *head = NULL;
+    Node *tail = NULL;
+
+    insertAtHead(head, tail, 11);
     print(head);
 
-    insertatHead(head, 12);
+    insertAtHead(head, tail, 12);
     print(head);
 
-    insertatHead(head, 13);
+    insertAtHead(head, tail, 13);
     print(head);
-    inserAtTail(tail, 30);
+
+    insertAtTail(tail, head, 30);
     print(head);
-    insertAtPosition(tail,head,3,17);
+
+    insertAtPosition(tail, head, 3, 17);
     print(head);
+
     return 0;
 }
