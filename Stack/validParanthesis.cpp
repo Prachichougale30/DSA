@@ -28,7 +28,7 @@ bool isValidParanthesis(string expression)
                 }
                 else
                 {
-                    return false; // Mismatched pair
+                    return false;
                 }
             }
             else
@@ -40,7 +40,8 @@ bool isValidParanthesis(string expression)
 
     return s.empty(); // True if all brackets matched
 }
-int main() {
+int main()
+{
     string exp1 = "{[()]}";
     string exp2 = "{[(])}";
 
