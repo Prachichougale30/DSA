@@ -25,7 +25,7 @@ bool findRedundantBrackets(string &s)
                 if (!st.empty()) {
                     st.pop();
                 }
-
+                
                 // If no operator was found between brackets
                 if (isRedundant) {
                     return true;
