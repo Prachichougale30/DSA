@@ -1,7 +1,14 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
-void sortedInsert(stack<int>& st, int num) {
-    if (st.empty() || (!st.empty() &&st.top() < num)) {
+/*Problem statement
+You are given a stack ‘S’. Your task is to sort the stack recursively.
+Not6:Looping through the stack is not allowed.
+You need to return a stack that is sorted in descending order.
+*/
+void sortedInsert(stack<int> &st, int num)
+{
+    if (st.empty() || (!st.empty() && st.top() < num))
+    {
         st.push(num);
         return;
     }
@@ -13,9 +20,12 @@ void sortedInsert(stack<int>& st, int num) {
     st.push(n);
 }
 
-stack<int> sortStack(stack<int>& s) {
-    if (s.empty()) {
-		return s;}
+stack<int> sortStack(stack<int> &s)
+{
+    if (s.empty())
+    {
+        return s;
+    }
 
     int num = s.top();
     s.pop();
