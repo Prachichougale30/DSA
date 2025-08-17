@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+/*
+Problem statement
+You're given a string 'S' consisting of "{", "}", "(", ")", "[" and "]" .
+Return true if the given string 'S' is balanced, else return false.
+*/
 bool isValidParanthesis(string expression)
 {
     stack<char> s;
