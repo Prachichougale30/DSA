@@ -1,18 +1,21 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int main(){
-    string str="Prachi";
+int main()
+{
+    string str = "Prachi";
     stack<char> s;
 
-    for(int i=0;i<=str.length();++i){
-        char ch=str[i];
+    for (int i = 0; i <= str.length(); ++i)
+    {
+        char ch = str[i];
         s.push(ch);
     }
-    string ans="";
-    while(!s.empty()){
-       char ch=s.top();
-       ans.push_back(ch);
-       s.pop();
+    string ans = "";
+    while (!s.empty())
+    {
+        char ch = s.top();
+        ans.push_back(ch);
+        s.pop();
     }
-    cout<<"after reverse string is "<<ans<<endl;
+    cout << "after reverse string is " << ans << endl;
 }
