@@ -2,7 +2,7 @@
 using namespace std;
 /*Problem statement
 You are given a stack ‘S’. Your task is to sort the stack recursively.
-Not6:Looping through the stack is not allowed.
+Looping through the stack is not allowed.
 You need to return a stack that is sorted in descending order.
 */
 void sortedInsert(stack<int> &st, int num)
