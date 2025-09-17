@@ -72,11 +72,54 @@ void levelOrderTraversal(node *root)
                 q.push(temp->right);
             }
         }
+        
     }
+
+    
+    
 }
+node *buildFromLevelOrder(node *root)
+{
+    queue<node *> q;
+    cout << "Enter data for root:" << endl;
+    int data;
+    cin >> data;
+    root = new node(data);
+    q.push(root);
+
+    while (!q.empty())
+    {
+        node *temp = q.front();
+        q.pop();
+
+        cout << "enter left node for:" << temp->data << endl;
+        int leftData;
+        cin >> leftData;
+
+        if (leftData != -1)
+        {
+            temp->left = new node(leftData);
+            q.push(temp->left);
+        }
+
+        cout << "enter right node for:" << temp->data << endl;
+        int rightData;
+        cin >> rightData;
+        if (rightData != -1)
+        {
+            temp->right = new node(rightData);
+            q.push(temp->right);
+        }
+    }
+    return root;
+}
+
 int main()
 {
     node *root = NULL;
+buildFromLevelOrder(root);
+levelOrderTraversal(root); ///1 3 5 7 11 17 -1 -1 -1 -1 -1 -1 -1
+    /*
     // creating binary tree
     root = buildTree(root);
 
@@ -90,6 +133,7 @@ int main()
 
     cout << "Printing the level order traversal:" << endl;
     levelOrderTraversal(root);
+    */
 
     return 0;
 }
