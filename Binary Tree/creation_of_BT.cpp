@@ -1,25 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class node {
+class node
+{
 public:
     int data;
-    node* left;
-    node* right;
+    node *left;
+    node *right;
 
-    node(int d) {
+    node(int d)
+    {
         this->data = d;
         this->left = NULL;
         this->right = NULL;
     }
 };
 
-node* buildTree(node* root) {
+node *buildTree(node *root)
+{
     cout << "Enter data:" << endl;
     int data;
     cin >> data;
 
-    if (data == -1) {   // check first
+    if (data == -1)
+    { // check first
         return NULL;
     }
 
@@ -34,36 +38,45 @@ node* buildTree(node* root) {
     return root;
 }
 
-void levelOrderTraversal(node* root) {
-    if (root == NULL) return;
+void levelOrderTraversal(node *root)
+{
+    if (root == NULL)
+        return;
 
-    queue<node*> q;
+    queue<node *> q;
     q.push(root);
     q.push(NULL);
 
-    while (!q.empty()) {
-        node* temp = q.front();
+    while (!q.empty())
+    {
+        node *temp = q.front();
         q.pop();
 
-        if (temp == NULL) {  // ✅ use comparison
+        if (temp == NULL)
+        { //  use comparison
             cout << endl;
-            if (!q.empty()) { 
+            if (!q.empty())
+            {
                 q.push(NULL); // mark next level end
             }
-        } else {
+        }
+        else
+        {
             cout << temp->data << " ";
-            if (temp->left) {
+            if (temp->left)
+            {
                 q.push(temp->left);
             }
-            if (temp->right) {
+            if (temp->right)
+            {
                 q.push(temp->right);
             }
         }
     }
 }
-
-int main() {
-    node* root = NULL;
+int main()
+{
+    node *root = NULL;
     // creating binary tree
     root = buildTree(root);
 
