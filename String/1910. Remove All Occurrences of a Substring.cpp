@@ -3,22 +3,10 @@ using namespace std;
 
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        int start=0,end=s.size()-1;
-        while(start<end){
-            if(!isalnum(s[start])){
-                start++;
-                continue;
-            }
-            if(!isalnum(s[end])){
-                end--;
-                continue;
-            }
-            if(tolower(s[start])!=tolower(s[end])){
-                return false;
-            }
-            start++,end--;
-        }
-        return true;
+    string removeOccurrences(string s, string part) {
+       while(s.length()>0 && s.find(part)<s.length()){
+        s.erase(s.find(part),part.length());
+       }
+       return s; 
     }
 };
