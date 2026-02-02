@@ -11,7 +11,7 @@ long long merge(vector<int> &arr, int st, int mid, int end) {
             temp.push_back(arr[i++]);
         } else {
             temp.push_back(arr[j++]);
-            invCount += (mid - i + 1);  // 핵심 로직
+            invCount += (mid - i + 1);  // 
         }
     }
 
