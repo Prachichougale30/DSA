@@ -178,7 +178,7 @@ int main()
     minheap.push(5);
     minheap.push(3);
 cout<<"element to top"<<minheap.top()<<endl;
-    pq.pop();
+    pq.pop(); 
     cout<<"element to top"<<minheap.top()<<endl;
     cout<<"Size is:"<<minheap.size()<<endl;
 
