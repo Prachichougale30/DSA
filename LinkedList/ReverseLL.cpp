@@ -31,7 +31,7 @@ public:
         }
         return prev;
     }
-};
+};-
 
 // Function to print the linked list
 void printList(Node* head) {
