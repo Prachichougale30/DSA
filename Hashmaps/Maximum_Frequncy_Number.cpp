@@ -14,7 +14,6 @@ class Solution {
             count[arr[i]]++;
             maxFreq = max(maxFreq, count[arr[i]]);
         }
-
         // find element with max frequency
         for(int i = 0; i < n; i++){
             if(maxFreq == count[arr[i]]){
