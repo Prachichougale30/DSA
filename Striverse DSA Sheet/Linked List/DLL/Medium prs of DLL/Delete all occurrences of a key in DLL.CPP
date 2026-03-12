@@ -1,52 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-class Node
+struct Node
 {
-public:
-    int data;
-    Node *next, *prev;
-    Node(int val) : data(val), next(NULL), prev(NULL)
-    {
-    }
-};
-
+  int data;
+  struct Node *next;
+  struct Node *prev;
+}; 
 class Solution {
   public:
-  
-    Node* findTail(Node* head){
-        Node* temp = head;
-        while(temp->next != NULL){
-            temp = temp->next;
-        }
-        return temp;
-    }
-  
-    vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target) {
-        vector<pair<int,int>> ans;
+    void deleteAllOccurOfX(struct Node** head_ref, int x) {
         
-        if(head == NULL) return ans;
+        Node* temp = *head_ref;
         
-        Node* left = head;
-        Node* right = findTail(head);
-        
-        while(left != right && right->next != left){
+        while(temp != NULL){
             
-            int sum = left->data + right->data;
-            
-            if(sum == target){
-                ans.push_back({left->data, right->data});
-                left = left->next;
-                right = right->prev;
-            }
-            else if(sum < target){
-                left = left->next;
+            if(temp->data == x){
+                
+                Node* nextNode = temp->next;
+                Node* prevNode = temp->prev;
+                
+                if(temp == *head_ref){
+                    *head_ref = nextNode;
+                }
+                
+                if(nextNode != NULL)
+                    nextNode->prev = prevNode;
+                    
+                if(prevNode != NULL)
+                    prevNode->next = nextNode;
+                
+                free(temp);
+                
+                temp = nextNode;
             }
             else{
-                right = right->prev;
+                temp = temp->next;
             }
         }
-        
-        return ans;
     }
 };
